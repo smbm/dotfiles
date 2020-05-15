@@ -1,0 +1,5 @@
+{
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "editor.tabSize": 2,
+    "editor.renderWhitespace": "all"
+}
