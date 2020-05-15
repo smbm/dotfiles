@@ -1,0 +1,9 @@
+[/]
+default='600223e6-a145-4ce3-8f95-66f72a8f3255'
+list=['600223e6-a145-4ce3-8f95-66f72a8f3255']
+
+[:600223e6-a145-4ce3-8f95-66f72a8f3255]
+audible-bell=false
+font='MesloLGS NF 12'
+use-system-font=false
+visible-name='TomV'
