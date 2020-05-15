@@ -1,0 +1,5 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Tom Vetterlein
+	email = tvetterlein@ubuntu-XPS-13-9360.corp.abides.co.uk
