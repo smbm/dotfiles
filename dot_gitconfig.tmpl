@@ -1,0 +1,23 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = "Thomas Vetterlein"
+	email = "{{ .workemail }}"
+
+[pull]
+	rebase = false
+
+[includeIf "gitdir:~/work/gitlab/primer-io/"]
+	path = ~/.gitconfig-work
+
+[includeIf "gitdir:~/work/github/primer-io/"]
+	path = ~/.gitconfig-work
+
+[includeIf "gitdir:~/Documents/Projects/"]
+	path = ~/.gitconfig-home
+
+[includeIf "gitdir:~/dotfiles/"]
+	path = ~/.gitconfig-home
+
+# [url "gitlab-personal:Vetterlein/"]
+# 	insteadOf = git@gitlab.com:Vetterlein/

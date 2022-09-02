@@ -1,0 +1,6 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#! /bin/sh
+echo Testing for and installing Homebrew if not installed
+[[ ! -x /opt/homebrew/bin/brew ]] && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+exit 0
+{{ end }}

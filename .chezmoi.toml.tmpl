@@ -1,0 +1,12 @@
+{{- $workemail := promptString "Work email address" -}}
+{{- $personalemail := promptString "Personal email address" -}}
+{{- $location := promptString "Is this a work or home machine" -}}
+[data]
+    workemail = "{{ $workemail }}"
+    personalemail = "{{ $personalemail }}"
+    location = "{{ $location }}"
+[diff]
+    exclude = ["scripts"]
+[edit]
+    command = "code"
+    args = ["--wait"]

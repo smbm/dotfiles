@@ -1,0 +1,148 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#! /bin/sh
+
+echo Setting MacOS settings
+###### Trackpad ######
+
+echo Set trackpad speed to medium high
+defaults write NSGlobalDomain com.apple.trackpad.scaling -int 2
+
+# # Set bottom right of trackpad to secondary click
+# defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 2
+# defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool false
+
+echo Set secondary click to click with 2 fingers
+defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 0
+defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
+
+echo Turn off swipe for page turns/forward/back
+defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool false
+
+echo Various trackpad gestures
+defaults write com.apple.AppleMultitouchTrackpad TrackpadFiveFingerPinchGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerHorizSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerPinchGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerVertSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -int 0
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -int 0
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerDoubleTapGesture -int 0
+defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
+
+
+###### Keyboard ######
+
+echo Set fast keyboard repeat and short delay
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+defaults write NSGlobalDomain KeyRepeat -int 2
+
+
+###### General UI fixes
+
+echo Set preferred search provider
+defaults write NSGlobalDomain 'NSPreferredWebServices' '{NSWebServicesProviderWebSearch = {NSDefaultDisplayName = DuckDuckGo; NSProviderIdentifier = "com.duckduckgo";};}'
+
+echo Set dark mode
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+
+echo Expand save panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+echo Expand print panel by default
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# echo Save to disk (not to iCloud) by default
+# defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+echo Automatically quit printer app once the print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+echo Save screenshots in PNG format '(other options: BMP, GIF, JPG, PDF, TIFF)'
+defaults write com.apple.screencapture type -string "png"
+
+echo Always show scroll bars
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+
+
+####### Dock and corner gestures ######
+
+echo Hot corners
+# Possible values:
+#  0: no-op
+#  2: Mission Control
+#  3: Show application windows
+#  4: Desktop
+#  5: Start screen saver
+#  6: Disable screen saver
+#  7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
+echo Bottom right screen corner Mission Control
+defaults write com.apple.dock wvous-br-corner -int 2
+defaults write com.apple.dock wvous-br-modifier -int 0
+echo Top right screen corner Notification Center
+defaults write com.apple.dock wvous-tr-corner -int 12
+defaults write com.apple.dock wvous-tr-modifier -int 0
+echo Bottom left screen corner Launchpad
+defaults write com.apple.dock wvous-bl-corner -int 11
+defaults write com.apple.dock wvous-bl-modifier -int 0
+# Top left screen corner - no action
+defaults write com.apple.dock wvous-tl-corner -int 0
+defaults write com.apple.dock wvous-tl-modifier -int 0
+
+echo Set dock tile size
+defaults write com.apple.dock tilesize -int 36
+
+
+###### Finder ######
+
+# Finder: show hidden files by default
+# defaults write com.apple.finder AppleShowAllFiles -bool true
+
+echo Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+echo When performing a search, search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+echo Avoid creating .DS_Store files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+echo Use list view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `Nlsv`, `clmv`, `Flwv`
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+echo Small finder sidebar icons
+defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
+
+echo Show the ~/Library folder
+chflags nohidden ~/Library
+
+echo Set Home as the default location for new Finder windows
+# For other paths, use `PfLo` and `file:///full/path/here/`
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+
+###### Maccy ######
+
+echo Maccy - Set my preferred key combo
+defaults write org.p0deje.Maccy KeyboardShortcuts_popup -string "{\"carbonModifiers\":256,\"carbonKeyCode\":39}"
+echo Paste by default
+defaults write org.p0deje.Maccy pasteByDefault -bool true
+
+###### iTerm2 ######
+
+echo Tell iTerm2 to look in this repo for my settings
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/dotfiles/dotfiles"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
+###### Adobe Acrobat Reader ######
+
+echo Tell Acrobat Reader to run natively on M1
+defaults write com.adobe.Reader AcrobatRunInNativeModeDC -bool true
+
+{{- end }}
