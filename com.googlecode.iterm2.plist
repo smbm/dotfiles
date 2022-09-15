@@ -6,6 +6,8 @@
 	<string>DAC10C36-4338-4A06-9C32-73BE01ACEC13</string>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
+	<key>HotkeyMigratedFromSingleToMulti</key>
+	<true/>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
