@@ -1,6 +1,7 @@
 {{- if eq .location "work" -}}
-kubectl 1.21.13
-helm 3.9.0
+kubectl 1.22.12
+helm 3.10.0
+tilt 0.30.5
 {{- else if eq .location "home" -}}
 terraform 1.2.8
 {{- end }}
