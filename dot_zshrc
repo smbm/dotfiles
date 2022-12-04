@@ -1,14 +1,27 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# zmodload zsh/zprof
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+  # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+  # Initialization code that may require console input (password prompts, [y/n]
+  # confirmations, etc.) must go above this block; everything else may go below.
+  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  fi
+
+  [[ -f $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme ]] && source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+  # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+  # More ZSH completion stuff
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+  # Atuin
+  export ATUIN_NOBIND="true"
+  [[ -x $(brew --prefix)/bin/atuin ]] && eval "$(atuin init zsh)"
+  # # bindkey "^[[A" history-beginning-search-backward
+  [[ -x $(brew --prefix)/bin/atuin ]] && bindkey '^r' _atuin_search_widget
 fi
 
-[[ -f $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme ]] && source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # ZSH completion stuff
 if type brew &>/dev/null; then
@@ -50,18 +63,22 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # More ZSH completion stuff
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ -f $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 #source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Atuin
-export ATUIN_NOBIND="true"
-[[ -x $(brew --prefix)/bin/atuin ]] && eval "$(atuin init zsh)"
-# # bindkey "^[[A" history-beginning-search-backward
-[[ -x $(brew --prefix)/bin/atuin ]] && bindkey '^r' _atuin_search_widget
+# # Atuin
+# export ATUIN_NOBIND="true"
+# [[ -x $(brew --prefix)/bin/atuin ]] && eval "$(atuin init zsh)"
+# # # bindkey "^[[A" history-beginning-search-backward
+# [[ -x $(brew --prefix)/bin/atuin ]] && bindkey '^r' _atuin_search_widget
 
 # direnv
 [[ -x $(brew --prefix)/bin/direnv ]] && eval "$(direnv hook zsh)"
 
 # asdf
 [[ -x $(brew --prefix)/bin/asdf ]] && . "$(brew --prefix asdf)/libexec/asdf.sh"
+
+if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
+  eval "$(starship init zsh)"
+fi
