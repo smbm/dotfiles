@@ -1,7 +1,11 @@
+# [character]
+# success_symbol = "[>](bold green)"
+# error_symbol = "[x](bold red)"
+# vimcmd_symbol = "[<](bold green)"
+
 [character]
-success_symbol = "[>](bold green)"
-error_symbol = "[x](bold red)"
-vimcmd_symbol = "[<](bold green)"
+error_symbol = "[λ](bold #ff5555)"
+success_symbol = "[λ](bold #f8f8f2)"
 
 # [git_commit]
 # tag_symbol = " tag "
@@ -14,20 +18,22 @@ vimcmd_symbol = "[<](bold green)"
 # deleted = "x"
 
 [aws]
-symbol = "aws "
+symbol = " "
 
 [directory]
 read_only = " "
+# style = "fg:#DA627D"
+style = "bold #50fa7b"
 
 [docker_context]
 symbol = "docker "
 disabled = true
 
-[git_branch]
-symbol = "git "
+# [git_branch]
+# symbol = "git "
 
 [golang]
-symbol = "go "
+symbol = " "
 
 [kubernetes]
 disabled = false
