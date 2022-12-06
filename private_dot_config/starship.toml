@@ -42,7 +42,7 @@ disabled = false
 symbol = "nodejs "
 
 [python]
-symbol = "py "
+symbol = " "
 
 [ruby]
 symbol = "rb "
