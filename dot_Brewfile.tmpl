@@ -86,7 +86,13 @@ brew "zsh-autosuggestions"
 
 # mas "xcode", id: 497799835
 # mas "the-unarchiver" , id: 425424353
+
+{{- if eq .location "home" }}
+
+# Home machine specific stuff
 mas "tailscale", id: 1475387142
+{{- end }}
+
 {{- if eq .location "work" }}
 
 # Work machine specific stuff
