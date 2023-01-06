@@ -1,7 +1,9 @@
+{{- $name := promptString "Name, mainly for Git config" -}}
 {{- $workemail := promptString "Work email address" -}}
 {{- $personalemail := promptString "Personal email address" -}}
 {{- $location := promptString "Is this a work or home machine" -}}
 [data]
+    name = "{{ $name }}"
     workemail = "{{ $workemail }}"
     personalemail = "{{ $personalemail }}"
     location = "{{ $location }}"
