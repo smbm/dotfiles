@@ -7,16 +7,6 @@
 error_symbol = "[λ](bold #ff5555)"
 success_symbol = "[λ](bold #f8f8f2)"
 
-# [git_commit]
-# tag_symbol = " tag "
-
-# [git_status]
-# ahead = ">"
-# behind = "<"
-# diverged = "<>"
-# renamed = "r"
-# deleted = "x"
-
 [aws]
 symbol = " "
 
@@ -29,8 +19,14 @@ style = "bold #50fa7b"
 symbol = "docker "
 disabled = true
 
-# [git_branch]
-# symbol = "git "
+[git_branch]
+style = "bold green"
+
+[git_commit]
+tag_symbol = " tag "
+
+[git_status]
+disabled = false
 
 [golang]
 symbol = " "
@@ -39,7 +35,7 @@ symbol = " "
 disabled = false
 
 [nodejs]
-symbol = "nodejs "
+symbol = " "
 
 [python]
 symbol = " "
