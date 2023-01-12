@@ -80,6 +80,9 @@ export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 # asdf
 [[ -x $(brew --prefix)/bin/asdf ]] && . "$(brew --prefix asdf)/libexec/asdf.sh"
 
+# 1Password
+source $HOME/.config/op/plugins.sh
+
 if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
   eval "$(starship init zsh)"
 fi
