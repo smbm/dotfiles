@@ -148,10 +148,10 @@ echo Tell Acrobat Reader to run natively on M1
 defaults write com.adobe.Reader AcrobatRunInNativeModeDC -bool true
 
 ###### Terminal.app #######
-
-echo Trying to install custom default theme in Apple Terminal.app
-sh -c open ~/.local/share/chezmoi/TomV.terminal
-defaults write com.apple.Terminal "Startup Window Settings" -string "TomV"
-defaults write com.apple.terminal "Default Window Settings" -string "TomV"
+# This needs more research
+# echo Trying to install custom default theme in Apple Terminal.app
+# sh -c open ~/.local/share/chezmoi/TomV.terminal
+# defaults write com.apple.Terminal "Startup Window Settings" -string "TomV"
+# defaults write com.apple.terminal "Default Window Settings" -string "TomV"
 
 {{- end }}
