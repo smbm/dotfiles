@@ -151,8 +151,8 @@ defaults write com.adobe.Reader AcrobatRunInNativeModeDC -bool true
 
 echo Attempting to set Terminal.app default theme
 theme=$(<~/.local/share/chezmoi/TomVTerminal.xml)
-plutil -replace Window\ Settings.TomV-Theme -xml "$theme" ~/Library/Preferences/com.apple.Terminal.plist
-defaults write com.apple.Terminal "Default Window Settings" -string "TomV-Theme"
-defaults write com.apple.Terminal "Startup Window Settings" -string "TomV-Theme"
+plutil -replace Window\ Settings.TomV -xml "$theme" ~/Library/Preferences/com.apple.Terminal.plist
+defaults write com.apple.Terminal "Default Window Settings" -string "TomV"
+defaults write com.apple.Terminal "Startup Window Settings" -string "TomV"
 
 {{- end }}
