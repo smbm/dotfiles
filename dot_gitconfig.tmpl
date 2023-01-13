@@ -1,8 +1,10 @@
-# This is Git's per-user configuration file.
 [user]
-# Please adapt and uncomment the following lines:
 	name = "{{ .name }}"
+	{{- if eq .location "work" }}
 	email = "{{ .workemail }}"
+	{{- else }}
+	email = "{{ .personalemail }}"
+	{{- end }}
 
 [pull]
 	rebase = false
@@ -19,7 +21,7 @@
 [includeIf "gitdir:~/dotfiles/"]
 	path = ~/.gitconfig-home
 
-[includeIf "gitdir:~/local/share/chezmoi/"]
+[includeIf "gitdir:~/.local/share/chezmoi/"]
 	path = ~/.gitconfig-home
 
 [core]
