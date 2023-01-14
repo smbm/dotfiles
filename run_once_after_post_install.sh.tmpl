@@ -27,6 +27,8 @@ fi
 COMPLETIONS+=('_awsume')
 [[ -x $(brew --prefix)/bin/atuin ]] && atuin gen-completions --shell zsh --out-dir ~/.zfunc
 COMPLETIONS+=('_atuin')
+[[ -x $(brew --prefix)/bin/aws-vault ]] && curl -fs https://raw.githubusercontent.com/99designs/aws-vault/master/contrib/completions/zsh/aws-vault.zsh > ~/.zfunc/_aws-vault
+COMPLETIONS+=('_aws-vault')
 echo ${COMPLETIONS[@]}
 
 echo "removing cruft"
