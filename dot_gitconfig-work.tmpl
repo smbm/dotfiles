@@ -2,6 +2,16 @@
 # Please adapt and uncomment the following lines:
 	name = "{{ .name }}"
 	email = "{{ .workemail }}"
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF4hMMJac9HfAHg6xSuRYZVydk2kwq7RWJ2bq3HVzTRu
 
 [core]
     sshCommand = "ssh -i ~/.ssh/work.pub"
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+	gpgsign = true
