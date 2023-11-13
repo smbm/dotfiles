@@ -12,7 +12,6 @@ cask "1password-cli"
 # cask "alfred"
 # cask "appcleaner"
 cask "brave-browser"
-cask "firefox"
 cask "font-hack-nerd-font"
 # cask "font-meslo-lg-nerd-font"
 cask "font-sf-mono"
@@ -20,7 +19,6 @@ cask "iterm2"
 cask "keepassxc"
 cask "maccy"
 # cask "macdown", args: { no_quarantine: true }
-cask "microsoft-edge"
 # cask "microsoft-excel"
 # cask "microsoft-office"
 # cask "microsoft-word"
@@ -95,6 +93,9 @@ brew "zsh-autosuggestions"
 
 # Home machine specific stuff
 mas "tailscale", id: 1475387142
+
+cask "microsoft-edge"
+cask "firefox"
 {{- end }}
 
 {{- if eq .location "work" }}

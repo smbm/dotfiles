@@ -28,13 +28,16 @@
 #
 # More examples can be found here:
 #  https://developer.1password.com/docs/ssh/agent/config
+{{- if eq .location "work" }}
 [[ssh-keys]]
 account = "Primer"
 vault = "Private"
 item = "Work"
+{{- end }}
 
+{{- if eq .location "home" }}
 [[ssh-keys]]
 account = "Tom Vetterlein"
 vault = "Personal"
 item = "Personal"
-
+{{- end }}

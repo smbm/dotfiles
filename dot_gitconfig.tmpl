@@ -15,14 +15,21 @@
 [includeIf "gitdir:~/work/github/primer-io/"]
 	path = ~/.gitconfig-work
 
+{{- if eq .location "home" }}
 [includeIf "gitdir:~/Documents/Projects/"]
-	path = ~/.gitconfig-home
-
-[includeIf "gitdir:~/dotfiles/"]
 	path = ~/.gitconfig-home
 
 [includeIf "gitdir:~/.local/share/chezmoi/"]
 	path = ~/.gitconfig-home
+{{- end }}
+
+{{- if eq .location "work" }}
+[includeIf "gitdir:~/Documents/Projects/"]
+	path = ~/.gitconfig-work
+
+[includeIf "gitdir:~/.local/share/chezmoi/"]
+	path = ~/.gitconfig-work
+{{- end }}
 
 [core]
 	editor = code --wait

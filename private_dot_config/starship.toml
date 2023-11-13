@@ -3,6 +3,8 @@
 # error_symbol = "[x](bold red)"
 # vimcmd_symbol = "[<](bold green)"
 
+command_timeout = 1000
+
 [character]
 error_symbol = "[λ](bold #ff5555)"
 success_symbol = "[λ](bold #f8f8f2)"
