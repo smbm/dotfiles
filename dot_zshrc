@@ -48,6 +48,19 @@ if [[ $TERM_PROGRAM == "vscode" ]]; then
   eval "$(starship init zsh)"
 fi
 
+if [[ $TERM_PROGRAM == "zed" ]]; then
+  # More ZSH completion stuff
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+  # Atuin
+  export ATUIN_NOBIND="true"
+  [[ -x $(brew --prefix)/bin/atuin ]] && eval "$(atuin init zsh)"
+  # # bindkey "^[[A" history-beginning-search-backward
+  [[ -x $(brew --prefix)/bin/atuin ]] && bindkey '^r' _atuin_search_widget
+
+  eval "$(starship init zsh)"
+fi
+
 # ZSH completion stuff
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
