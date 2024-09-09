@@ -3,6 +3,27 @@
 # error_symbol = "[x](bold red)"
 # vimcmd_symbol = "[<](bold green)"
 
+format = """
+$directory\
+$sudo\
+$git_branch\
+$git_commit\
+$git_metrics\
+$git_status\
+$terraform\
+$docker_context\
+$kubernetes\
+$python\
+$golang\
+$nodejs\
+$ruby\
+$rust\
+$swift\
+$aws\
+$time\n
+$character
+"""
+
 command_timeout = 1000
 
 [character]
@@ -62,3 +83,6 @@ symbol = "swift "
 
 [terraform]
 symbol = "terraform "
+
+[time]
+disabled = false
