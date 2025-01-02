@@ -3,5 +3,5 @@
 
 # .Brewfile hash: {{ include "dot_Brewfile.tmpl" | sha256sum }}
 echo running brew bundle on change to Brewfile
-brew bundle
+brew bundle --file=~/.Brewfile
 {{ end }}
