@@ -105,10 +105,10 @@ export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 [[ -f $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # direnv
-[[ -x $(brew --prefix)/bin/direnv ]] && eval "$(direnv hook zsh)"
+#[[ -x $(brew --prefix)/bin/direnv ]] && eval "$(direnv hook zsh)"
 
 # asdf
-[[ -x $(brew --prefix)/bin/asdf ]] && . "$(brew --prefix asdf)/libexec/asdf.sh"
+#[[ -x $(brew --prefix)/bin/asdf ]] && . "$(brew --prefix asdf)/libexec/asdf.sh"
 
 # 1Password
 [[ -x $HOME/.config/op/plugins.sh ]] && source $HOME/.config/op/plugins.sh
