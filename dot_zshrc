@@ -1,28 +1,8 @@
 # zmodload zsh/zprof
-if [[ $TERM_PROGRAM == "iTerm.app" ]]; then
-  # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-  # Initialization code that may require console input (password prompts, [y/n]
-  # confirmations, etc.) must go above this block; everything else may go below.
-  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-  fi
 
-  [[ -f $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme ]] && source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
-
-  # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-  # More ZSH completion stuff
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-  # Atuin
-  export ATUIN_NOBIND="true"
-  [[ -x $(brew --prefix)/bin/atuin ]] && eval "$(atuin init zsh)"
-  # # bindkey "^[[A" history-beginning-search-backward
-  [[ -x $(brew --prefix)/bin/atuin ]] && bindkey '^r' _atuin_search_widget
-fi
-
-if [[ $TERM_PROGRAM == "Apple_Terminal" ]]; then
+if [[ $TERM_PROGRAM == "Apple_Terminal"
+    || $TERM_PROGRAM == "ghostty" || $TERM_PROGRAM == "vscode"
+    || $TERM_PROGRAM == "zed" || $TERM_PROGRAM == "iTerm.app" ]]; then
   # More ZSH completion stuff
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -35,29 +15,7 @@ if [[ $TERM_PROGRAM == "Apple_Terminal" ]]; then
   eval "$(starship init zsh)"
 fi
 
-if [[ $TERM_PROGRAM == "vscode" ]]; then
-  # More ZSH completion stuff
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-  # Atuin
-  export ATUIN_NOBIND="true"
-  [[ -x $(brew --prefix)/bin/atuin ]] && eval "$(atuin init zsh)"
-  # # bindkey "^[[A" history-beginning-search-backward
-  [[ -x $(brew --prefix)/bin/atuin ]] && bindkey '^r' _atuin_search_widget
-
-  eval "$(starship init zsh)"
-fi
-
-if [[ $TERM_PROGRAM == "zed" ]]; then
-  # More ZSH completion stuff
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-  # Atuin
-  export ATUIN_NOBIND="true"
-  [[ -x $(brew --prefix)/bin/atuin ]] && eval "$(atuin init zsh)"
-  # # bindkey "^[[A" history-beginning-search-backward
-  [[ -x $(brew --prefix)/bin/atuin ]] && bindkey '^r' _atuin_search_widget
-
+if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
   eval "$(starship init zsh)"
 fi
 
@@ -112,7 +70,3 @@ export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
 # 1Password
 [[ -x $HOME/.config/op/plugins.sh ]] && source $HOME/.config/op/plugins.sh
-
-if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
-  eval "$(starship init zsh)"
-fi
