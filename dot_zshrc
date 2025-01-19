@@ -12,11 +12,12 @@ if [[ $TERM_PROGRAM == "Apple_Terminal"
   # # bindkey "^[[A" history-beginning-search-backward
   [[ -x $(brew --prefix)/bin/atuin ]] && bindkey '^r' _atuin_search_widget
 
-  eval "$(starship init zsh)"
+  [[ -x $(brew --prefix)/bin/starship ]] && eval "$(starship init zsh)"
 fi
 
 if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
-  eval "$(starship init zsh)"
+  # Warp does not need fzf or Atuin as it is all built in
+  [[ -x $(brew --prefix)/bin/starship ]] && eval "$(starship init zsh)"
 fi
 
 # ZSH completion stuff
@@ -36,7 +37,6 @@ fi
 
 # My aliases
 alias ll="ls -lah"
-[[ -x $(brew --prefix)/bin/awsume ]] && alias awsume=". awsume"
 
 # Python Stuff
 if [[ -x $(brew --prefix)/bin/pyenv ]]; then
@@ -53,20 +53,26 @@ export HOMEBREW_BUNDLE_NO_LOCK=true
 export HOMEBREW_BUNDLE_FILE=$HOME/.Brewfile
 
 # Some paths
-export PATH="$(brew --prefix)/opt/openssl@1.1/bin:$PATH"
+[[ -x $(brew --prefix)/opt/openssl@1.1 ]] && export PATH="$(brew --prefix)/opt/openssl@1.1/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
+
+# If coreutils are installed export path so they are used instead of Macos utils
+[[ -x $(brew --prefix)/opt/coreutils ]] && export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
 # Even More ZSH completion stuff
 [[ -f $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # direnv
-#[[ -x $(brew --prefix)/bin/direnv ]] && eval "$(direnv hook zsh)"
+[[ -x $(brew --prefix)/bin/direnv ]] && eval "$(direnv hook zsh)"
 
 # asdf
-#[[ -x $(brew --prefix)/bin/asdf ]] && . "$(brew --prefix asdf)/libexec/asdf.sh"
+[[ -x $(brew --prefix)/bin/asdf ]] && . "$(brew --prefix asdf)/libexec/asdf.sh"
 
 # 1Password
 [[ -x $HOME/.config/op/plugins.sh ]] && source $HOME/.config/op/plugins.sh
+
+# AWSume
+[[ -x $(brew --prefix)/bin/awsume ]] && alias awsume=". awsume"
+
