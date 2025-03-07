@@ -7,24 +7,12 @@
 mkdir -p ~/.zfunc
 
 #==============
-# Install Poetry
-#==============
-# curl -sSL https://install.python-poetry.org | python3 -
-
-#==============
 # Create local completions in .zfunc folder
 # Allow overriding with files of matching names in the custom-configs dir
 #==============
 COMPLETIONS=()
 [[ -x /usr/local/bin/op ]] && op completion zsh > ~/.zfunc/_op
 COMPLETIONS+=('_op')
-# [[ -x $HOME/.poetry/bin ]] && poetry completions zsh > ~/.zfunc/_poetry
-# COMPLETIONS+=('_poetry')
-# if [[ -x $(brew --prefix)/bin/awsume ]]; then
-#    awsume-configure --shell zsh
-#    cp ~/.awsume/zsh-autocomplete/_awsume ~/.zfunc
-#fi
-#COMPLETIONS+=('_awsume')
 [[ -x $(brew --prefix)/bin/atuin ]] && atuin gen-completions --shell zsh --out-dir ~/.zfunc
 COMPLETIONS+=('_atuin')
 echo ${COMPLETIONS[@]}
