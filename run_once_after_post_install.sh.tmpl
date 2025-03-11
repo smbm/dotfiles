@@ -1,23 +1,8 @@
 {{- if eq .chezmoi.os "darwin" -}}
 #! /bin/sh
 
-#==============
-# Create necessary folders
-#==============
-mkdir -p ~/.zfunc
-
-#==============
-# Create local completions in .zfunc folder
-# Allow overriding with files of matching names in the custom-configs dir
-#==============
-COMPLETIONS=()
-[[ -x /usr/local/bin/op ]] && op completion zsh > ~/.zfunc/_op
-COMPLETIONS+=('_op')
+echo Creating Completions for op and atuin if installed
+[[ ! -d ~/.zfunc ]] && mkdir -p ~/.zfunc
+[[ -x $(brew --prefix)/bin/op ]] && op completion zsh > ~/.zfunc/_op
 [[ -x $(brew --prefix)/bin/atuin ]] && atuin gen-completions --shell zsh --out-dir ~/.zfunc
-COMPLETIONS+=('_atuin')
-echo ${COMPLETIONS[@]}
-
-echo "removing cruft"
-[[ -e ~/.zshenv ]] && rm ~/.zshenv
-
 {{- end }}
