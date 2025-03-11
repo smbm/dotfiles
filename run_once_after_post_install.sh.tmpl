@@ -18,6 +18,6 @@ COMPLETIONS+=('_atuin')
 echo ${COMPLETIONS[@]}
 
 echo "removing cruft"
-[[ -f ~/.zshenv ]] && rm ~/.zshenv
+[[ -e ~/.zshenv ]] && rm ~/.zshenv
 
 {{- end }}
