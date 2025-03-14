@@ -3,6 +3,6 @@
 
 echo Creating Completions for op and atuin if installed
 [[ ! -d ~/.zfunc ]] && mkdir -p ~/.zfunc
-[[ -x $(brew --prefix)/bin/op ]] && op completion zsh > ~/.zfunc/_op
-[[ -x $(brew --prefix)/bin/atuin ]] && atuin gen-completions --shell zsh --out-dir ~/.zfunc
+[[ -x $(/opt/homebrew/bin/brew --prefix)/bin/op ]] && op completion zsh > ~/.zfunc/_op
+[[ -x $(/opt/homebrew/bin/brew --prefix)/bin/atuin ]] && atuin gen-completions --shell zsh --out-dir ~/.zfunc
 {{- end }}
