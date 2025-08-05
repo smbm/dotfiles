@@ -9,6 +9,7 @@ cask "1password-cli"
 # # Does not work without Rosetta
 # cask "adobe-acrobat-reader"
 # cask "appcleaner"
+cask "font-atkynson-mono-nerd-font"
 # cask "brave-browser"
 cask "font-hack-nerd-font"
 cask "font-sf-mono"
@@ -28,7 +29,7 @@ cask "soundsource"
 cask "tor-browser"
 cask "visual-studio-code"
 # cask "warp"
- #cask "zoom"
+cask "zoom"
 
 brew "ansible"
 brew "ansible-lint"
@@ -89,9 +90,11 @@ brew "zsh-autosuggestions"
 
 # Home machine specific stuff
 mas "tailscale", id: 1475387142
+mas "wireguard", id: 1451685025
 
 # cask "microsoft-edge"
 cask "firefox"
+cask "yubico-authenticator"
 {{- end }}
 
 {{- if eq .location "work" }}
