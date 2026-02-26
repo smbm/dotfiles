@@ -89,6 +89,7 @@ brew "zsh-autosuggestions"
 {{- if eq .location "home" }}
 
 # Home machine specific stuff
+brew "protonpass/tap/pass-cli"
 mas "tailscale", id: 1475387142
 mas "wireguard", id: 1451685025
 
@@ -109,7 +110,7 @@ cask "warp"
 brew "terraform-docs"
 brew "warrensbox/tap/tfswitch"
 
-brew "asdf"
+  brew "asdf"
 brew "awscli"
 brew "aws-vault"
 brew "bat"
