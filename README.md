@@ -10,3 +10,4 @@ To install:
 	2. Probably set a bunch of permissions in Settings -> Privacy (Maybe this should be added to the script)
 
 To do: Migrate to Proton Pass
+
